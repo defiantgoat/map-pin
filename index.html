@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Map Pin Tool - Beta</title>
+<link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/dojo/dijit/themes/claro/claro.css">
+<link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/esri/css/esri.css">
+<link rel="stylesheet" href="css/reset2011.css" />
+<link rel="stylesheet" type='text/css' href='css/main.css' />
+<script src="//use.edgefonts.net/pt-sans;ultra.js"></script>
+</head>
+<body class="claro">
+<div id="tools" class="panel bg-trans-white light-shadow">
+  <div class="title light-shadow">Map Pin Tool<span style="font-size:40%;letter-spacing:normal;">BETA</span></div>
+  <div class="inner">
+    <div class="light-shadow">
+      <h2>Basemaps<i class="icon map"></i></h2>
+      <div class="section">
+        <ul>
+          <li data-basemap="streets">Streets</li>
+          <li data-basemap="satellite">Satellite</li>
+          <li data-basemap="hybrid">Hybrid</li>
+          <li data-basemap="topo">Topographic</li>
+          <li data-basemap="gray">Gray Canvas</li>
+          <li data-basemap="oceans">Oceans</li>
+          <li data-basemap="national-geographic">National Geographic</li>
+          <li data-basemap="osm">Open Street Map</li>
+        </ul>
+      </div>
+    </div>
+    <div class="light-shadow">
+      <h2>Map Pin Tester<i class="icon map-pin"></i></h2>
+      <div class="section" id="map-pin-tester">      	
+        <div>
+          <ul id="pins">
+          </ul>
+        </div>
+        <button id="clearMap" class="float-right off">Clear Map</button>
+        <input type="file" id="files" name="files[]" multiple class="clearer" />
+        <small class="note">50px by 50px maxiumum size.</small>
+      </div>
+    </div>
+    <div class="light-shadow off">
+      <h2>Build a map pin</h2>
+      <div class="section">
+      <small class="note">Future Tool</small>
+      <canvas id="canvas"></canvas>
+        <img id="canvas-img" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<div id="map"></div>
+<script type="text/javascript">
+		var dojoConfig = {
+			async: true,
+			selectorEngine: "acme",
+			packages: [{
+                    name: "defiantgoat",
+                    location: location.pathname.replace(/[^\/]+$/, '') + "scripts/defiantgoat"
+                }]
+		};
+    </script> 
+<script src="//serverapi.arcgisonline.com/jsapi/arcgis/?v=3.5"></script> 
+<script type="text/javascript">
+            require(["defiantgoat/MapExplorer"], function(mapExplorer) {
+                mapExplorer.startup({
+					initBasemap: "national-geographic" 
+				});
+            });
+        </script>
+</body>
+</html>
